@@ -6,7 +6,7 @@ class FirstPassParser {
   static List<flutter.Widget> parseChildren(List<dynamic> childrenJson) {
     return childrenJson.map((childJson) {
       final WidgetDescription childDescription = WidgetDescription.fromJson(childJson);
-      return WidgetBuilderJson.buildWidget(childDescription);
+      return WidgetBuilder.buildWidget(childDescription);
     }).toList();
   }
 }

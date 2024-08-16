@@ -1,6 +1,6 @@
 name: karios_widget
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' 
 
 
 version: 1.0.0+1
@@ -12,8 +12,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_screenutil: ^5.0.0+2
   dynamic_widget_builder:
     path: ../
+
 
 
   # The following adds the Cupertino Icons font to your application.

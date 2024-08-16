@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'widget_description.g.dart';
 
 @JsonSerializable()
@@ -8,9 +9,14 @@ class WidgetDescription {
 
   WidgetDescription({required this.type, required this.properties});
 
-  factory WidgetDescription.fromJson(Map<String, dynamic> json) => _$WidgetDescriptionFromJson(json);
+  factory WidgetDescription.fromJson(Map<String, dynamic> json) =>
+      _$WidgetDescriptionFromJson(json);
+
   Map<String, dynamic> toJson() => _$WidgetDescriptionToJson(this);
 }
+
+
+
 
 
 
