@@ -1,25 +1,26 @@
-import 'package:flutter/material.dart' as flutter;
+import 'package:flutter/material.dart';
 
 class ParsingUtils {
-  static double parseSize(dynamic size) {
-    if (size is String) {
-      return double.parse(size.replaceAll('px', ''));
-    }
-    return size?.toDouble() ?? 0.0;
+  static bool isXml(String input) {
+    return input.trim().startsWith('<');
   }
 
-  static flutter.Color parseColor(dynamic color) {
-  if (color is String) {
-    String formattedColor = color.startsWith('#') ? color.substring(1) : color;
-    return flutter.Color(int.parse('0xFF$formattedColor'));
+  static bool isJson(String input) {
+    return input.trim().startsWith('{');
   }
-  return flutter.Colors.transparent;
-}
 
-  static double parseFontSize(dynamic fontSize) {
-    if (fontSize is String) {
-      return double.parse(fontSize.replaceAll('sp', ''));
-    }
-    return fontSize?.toDouble() ?? 14.0;
+  static double? parseSize(String? size) {
+    if (size == null) return null;
+    return double.tryParse(size);
+  }
+
+  static Color? parseColor(String? color) {
+    if (color == null) return null;
+    return Color(int.parse(color, radix: 16) + 0xFF000000);
+  }
+
+  static double? parseFontSize(String? fontSize) {
+    if (fontSize == null) return null;
+    return double.tryParse(fontSize);
   }
 }
