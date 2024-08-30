@@ -28,20 +28,29 @@ class MyApp extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               DynamicWidgetBuilder.buildFromXml('''
-<Column>
-  <Text text="Hello from XML!" />
-  <Text color="#FF00FF" fontSize="18">Dynamic XML Widget!</Text>
-  <Container color="#00FF00" padding="10,10,10,10">
-    <Column>
-      <Text fontSize="16" color="#000000">Nested Container Text</Text>
-      <Row>
-        <Text color="#FF0000">Row Item 1</Text>
-        <Text color="#00FF01">Row Item 2</Text>
-        <Text color="#0000FF">Row Item 3</Text>
-      </Row>
-    </Column>
-  </Container>
-</Column>
+
+<Row>
+    <Expanded flex="1">
+      <Container color="#FF0000">
+        <Text text="First Row Item" color="#FFFFFF" fontSize="16"/>
+      </Container>
+    </Expanded>
+    <SizedBox width="10"/>
+    <Expanded flex="2">
+      <Container color="#00FF00">
+        <Text text="Second Row Item with More Space" color="#000000" fontSize="16"/>
+      </Container>
+    </Expanded>
+    <SizedBox width="10"/>
+    <Expanded flex="1">
+      <Container color="#0000FF">
+        <Text text="Third Row Item" color="#FFFFFF" fontSize="16"/>
+      </Container>
+    </Expanded>
+  </Row>
+
+
+
               '''),
               const Divider(),
               const Padding(

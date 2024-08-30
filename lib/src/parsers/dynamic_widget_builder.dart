@@ -8,21 +8,25 @@ class DynamicWidgetBuilder {
     try {
       final widgetDescription = JsonParser.parse(jsonString);
       return wd.WidgetBuilder.build(widgetDescription);
-    } catch (e) {
+    } catch (e, stacktrace) {
       print('Error building widget from JSON: $e');
+      print(stacktrace);
       return ErrorWidget('Failed to build widget from JSON');
     }
   }
 
   static Widget buildFromXml(String xmlString) {
-    try {
-      final widgetDescription = XmlParser.parse(xmlString);
-      return wd.WidgetBuilder.build(widgetDescription);
-    } catch (e) {
-      print('Error building widget from XML: $e');
-      return ErrorWidget('Failed to build widget from XML');
-    }
+  try {
+    final widgetDescription = XmlParser.parse(xmlString);
+    print("Parsed XML to WidgetDescription: $widgetDescription");
+    return wd.WidgetBuilder.build(widgetDescription);
+  } catch (e, stacktrace) {
+    print('Error building widget from XML: $e');
+    print(stacktrace); 
+    return ErrorWidget('Failed to build widget from XML: $e');
   }
+}
+
 }
 
 

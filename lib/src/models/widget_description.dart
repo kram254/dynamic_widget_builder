@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:xml/xml.dart';
 
 part 'widget_description.g.dart';
 
@@ -13,7 +14,110 @@ class WidgetDescription {
       _$WidgetDescriptionFromJson(json);
 
   Map<String, dynamic> toJson() => _$WidgetDescriptionToJson(this);
+
+  // New method to parse XML and create a WidgetDescription
+//   factory WidgetDescription.fromXml(XmlElement xmlElement) {
+//   final String type = xmlElement.name.local;
+//   final Map<String, dynamic> properties = {};
+
+//   // Parse attributes as properties
+//   xmlElement.attributes.forEach((attribute) {
+//     properties[attribute.name.local] = attribute.value;
+//   });
+
+//   // Parse child elements
+//   final List<dynamic> children = [];
+//   for (var childElement in xmlElement.children.whereType<XmlElement>()) {
+//     children.add(WidgetDescription.fromXml(childElement).toJson());
+//   }
+
+//   if (children.isNotEmpty) {
+//     properties['children'] = children;
+//   }
+
+//   // Handle text content within the element
+//   if (xmlElement.text.trim().isNotEmpty) {
+//     properties['text'] = xmlElement.text.trim();
+//   }
+
+//   return WidgetDescription(type: type, properties: properties);
+// }
+
+
+factory WidgetDescription.fromXml(XmlElement xmlElement) {
+    final String type = xmlElement.name.local;
+    final Map<String, dynamic> properties = {};
+
+    // Parse attributes as properties
+    xmlElement.attributes.forEach((attribute) {
+        properties[attribute.name.local] = attribute.value;
+    });
+
+    // Parse child elements
+    if (xmlElement.children.isNotEmpty) {
+        final List<dynamic> children = [];
+        xmlElement.children.whereType<XmlElement>().forEach((childElement) {
+            children.add(WidgetDescription.fromXml(childElement).toJson());
+        });
+        if (children.isNotEmpty) {
+            properties['children'] = children;
+        }
+    }
+
+    // Handle text content within the element
+    if (xmlElement.text.trim().isNotEmpty) {
+        properties['text'] = xmlElement.text.trim();
+    }
+
+    return WidgetDescription(type: type, properties: properties);
 }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,19 +141,21 @@ class WidgetDescription {
 // class WidgetDescription {
 //   final String type;
 //   final Map<String, dynamic> properties;
-//   final List<WidgetDescription>? children;
 
-//   WidgetDescription({
-//     required this.type,
-//     required this.properties,
-//     this.children,
-//   });
+//   WidgetDescription({required this.type, required this.properties});
 
 //   factory WidgetDescription.fromJson(Map<String, dynamic> json) =>
 //       _$WidgetDescriptionFromJson(json);
 
 //   Map<String, dynamic> toJson() => _$WidgetDescriptionToJson(this);
 // }
+
+
+
+
+
+
+
 
 
 
