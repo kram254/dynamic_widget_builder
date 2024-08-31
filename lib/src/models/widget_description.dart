@@ -15,34 +15,6 @@ class WidgetDescription {
 
   Map<String, dynamic> toJson() => _$WidgetDescriptionToJson(this);
 
-  // New method to parse XML and create a WidgetDescription
-//   factory WidgetDescription.fromXml(XmlElement xmlElement) {
-//   final String type = xmlElement.name.local;
-//   final Map<String, dynamic> properties = {};
-
-//   // Parse attributes as properties
-//   xmlElement.attributes.forEach((attribute) {
-//     properties[attribute.name.local] = attribute.value;
-//   });
-
-//   // Parse child elements
-//   final List<dynamic> children = [];
-//   for (var childElement in xmlElement.children.whereType<XmlElement>()) {
-//     children.add(WidgetDescription.fromXml(childElement).toJson());
-//   }
-
-//   if (children.isNotEmpty) {
-//     properties['children'] = children;
-//   }
-
-//   // Handle text content within the element
-//   if (xmlElement.text.trim().isNotEmpty) {
-//     properties['text'] = xmlElement.text.trim();
-//   }
-
-//   return WidgetDescription(type: type, properties: properties);
-// }
-
 
 factory WidgetDescription.fromXml(XmlElement xmlElement) {
     final String type = xmlElement.name.local;

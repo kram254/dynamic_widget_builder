@@ -29,25 +29,22 @@ class MyApp extends StatelessWidget {
               const SizedBox(height: 10),
               DynamicWidgetBuilder.buildFromXml('''
 
-<Row>
-    <Expanded flex="1">
-      <Container color="#FF0000">
-        <Text text="First Row Item" color="#FFFFFF" fontSize="16"/>
+  
+      <Stack>
+    <Container color="#9E9E9E" width="100" height="100">
+      <Text text="Base Container" color="#000000"/>
+    </Container>
+    <Positioned left="30" top="30">
+      <Container color="#E91E63" width="50" height="50">
+        <Text text="Top Positioned" color="#FFFFFF"/>
       </Container>
-    </Expanded>
-    <SizedBox width="10"/>
-    <Expanded flex="2">
-      <Container color="#00FF00">
-        <Text text="Second Row Item with More Space" color="#000000" fontSize="16"/>
+    </Positioned>
+    <Positioned right="10" bottom="10">
+      <Container color="#03A9F4" width="30" height="30">
+        <Text text="Bottom Positioned" color="#FFFFFF"/>
       </Container>
-    </Expanded>
-    <SizedBox width="10"/>
-    <Expanded flex="1">
-      <Container color="#0000FF">
-        <Text text="Third Row Item" color="#FFFFFF" fontSize="16"/>
-      </Container>
-    </Expanded>
-  </Row>
+    </Positioned>
+  </Stack>
 
 
 

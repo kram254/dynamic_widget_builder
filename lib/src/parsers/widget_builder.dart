@@ -15,173 +15,153 @@ class WidgetBuilder {
   }
 
   static Widget build(WidgetDescription description) {
-
     // Check if the widget type has a custom builder registered
-    print('Building widget: ${description.type} with properties: ${description.properties}');
-
+    print(
+        'Building widget: ${description.type} with properties: ${description.properties}');
 
     if (_customBuilders.containsKey(description.type)) {
       return _customBuilders[description.type]!(description.properties);
     }
 
-    try{
-
-    switch (description.type) {
-      case 'Text':
-        return _buildText(description.properties);
-      case 'Container':
-        return _buildContainer(description.properties);
-      case 'Column':
-        return _buildColumn(description.properties);
-      case 'Row':
-        return _buildRow(description.properties);
-      case 'Stack':
-        return _buildStack(description.properties);
-      case 'ListView':
-        return _buildListView(description.properties);
+    try {
+      switch (description.type) {
+        case 'Text':
+          return _buildText(description.properties);
+        case 'Container':
+          return _buildContainer(description.properties);
+        case 'Column':
+          return _buildColumn(description.properties);
+        case 'Row':
+          return _buildRow(description.properties);
+        case 'Stack':
+          return _buildStack(description.properties);
+        case 'ListView':
+          return _buildListView(description.properties);
+        case 'GridView':
+          return _buildGridView(description.properties);
+        case 'Expanded':
+          return _buildExpanded(description.properties);
+        case 'Padding':
+          return _buildPadding(description.properties);
+        case 'Center':
+          return _buildCenter(description.properties);
+        case 'Align':
+          return _buildAlign(description.properties);
+        case 'SizedBox':
+          return _buildSizedBox(description.properties);
+        case 'AspectRatio':
+          return _buildAspectRatio(description.properties);
+        case 'FittedBox':
+          return _buildFittedBox(description.properties);
+        case 'FractionallySizedBox':
+          return _buildFractionallySizedBox(description.properties);
+        case 'LimitedBox':
+          return _buildLimitedBox(description.properties);
+        case 'Offstage':
+          return _buildOffstage(description.properties);
+        case 'OverflowBox':
+          return _buildOverflowBox(description.properties);
+        case 'SizedOverflowBox':
+          return _buildSizedOverflowBox(description.properties);
+        case 'Transform':
+          return _buildTransform(description.properties);
+        case 'CustomPaint':
+          return _buildCustomPaint(description.properties);
+        case 'ClipPath':
+          return _buildClipPath(description.properties);
+        case 'ClipRect':
+          return _buildClipRect(description.properties);
+        case 'ClipOval':
+          return _buildClipOval(description.properties);
+        case 'Opacity':
+          return _buildOpacity(description.properties);
+        case 'BackdropFilter':
+          return _buildBackdropFilter(description.properties);
+        case 'DecoratedBox':
+          return _buildDecoratedBox(description.properties);
+        case 'FractionalTranslation':
+          return _buildFractionalTranslation(description.properties);
+        case 'RotatedBox':
+          return _buildRotatedBox(description.properties);
+        case 'ConstrainedBox':
+          return _buildConstrainedBox(description.properties);
+        case 'UnconstrainedBox':
+          return _buildUnconstrainedBox(description.properties);
+        case 'Scaffold':
+          return _buildScaffold(description.properties);
+        case 'AppBar':
+          return _buildAppBar(description.properties);
+        case 'BottomNavigationBar':
+          return _buildBottomNavigationBar(description.properties);
+        case 'Drawer':
+          return _buildDrawer(description.properties);
+        case 'TabBar':
+          return _buildTabBar(description.properties);
+        case 'TabBarView':
+          return _buildTabBarView(description.properties);
+        case 'AlertDialog':
+          return _buildAlertDialog(description.properties);
+        case 'SnackBar':
+          return _buildSnackBar(description.properties);
+        case 'Divider':
+          return _buildDivider(description.properties);
+        case 'CircularProgressIndicator':
+          return _buildCircularProgressIndicator(description.properties);
+        case 'LinearProgressIndicator':
+          return _buildLinearProgressIndicator(description.properties);
+        case 'Slider':
+          return _buildSlider(description.properties);
+        case 'Switch':
+          return _buildSwitch(description.properties);
+        case 'Checkbox':
+          return _buildCheckbox(description.properties);
+        case 'Radio':
+          return _buildRadio(description.properties);
+        case 'DropdownButton':
+          return _buildDropdownButton(description.properties);
+        case 'Chip':
+          return _buildChip(description.properties);
+        case 'Tooltip':
+          return _buildTooltip(description.properties);
+        case 'AnimatedContainer':
+          return _buildAnimatedContainer(description.properties);
+        case 'FadeTransition':
+          return _buildFadeTransition(description.properties);
+        case 'ScaleTransition':
+          return _buildScaleTransition(description.properties);
+        case 'SlideTransition':
+          return _buildSlideTransition(description.properties);
+        case 'Opacity':
+          return _buildOpacity(description.properties);
+        case 'Stack':
+        return _buildStack(description.properties); // Added Stack case
+      case 'Positioned':
+        return _buildPositioned(description.properties); // Added Positioned case
       case 'GridView':
-        return _buildGridView(description.properties);
-      case 'Expanded':
-        return _buildExpanded(description.properties);
-      case 'Padding':
-        return _buildPadding(description.properties);
-      case 'Center':
-        return _buildCenter(description.properties);
-      case 'Align':
-        return _buildAlign(description.properties);
-      case 'SizedBox':
-        return _buildSizedBox(description.properties);
-      case 'AspectRatio':
-        return _buildAspectRatio(description.properties);
-      case 'FittedBox':
-        return _buildFittedBox(description.properties);
-      case 'FractionallySizedBox':
-        return _buildFractionallySizedBox(description.properties);
-      case 'LimitedBox':
-        return _buildLimitedBox(description.properties);
-      case 'Offstage':
-        return _buildOffstage(description.properties);
-      case 'OverflowBox':
-        return _buildOverflowBox(description.properties);
-      case 'SizedOverflowBox':
-        return _buildSizedOverflowBox(description.properties);
-      case 'Transform':
-        return _buildTransform(description.properties);
-      case 'CustomPaint':
-        return _buildCustomPaint(description.properties);
-      case 'ClipPath':
-        return _buildClipPath(description.properties);
-      case 'ClipRect':
-        return _buildClipRect(description.properties);
-      case 'ClipOval':
-        return _buildClipOval(description.properties);
-      case 'Opacity':
-        return _buildOpacity(description.properties);
-      case 'BackdropFilter':
-        return _buildBackdropFilter(description.properties);
-      case 'DecoratedBox':
-        return _buildDecoratedBox(description.properties);
-      case 'FractionalTranslation':
-        return _buildFractionalTranslation(description.properties);
-      case 'RotatedBox':
-        return _buildRotatedBox(description.properties);
-      case 'ConstrainedBox':
-        return _buildConstrainedBox(description.properties);
-      case 'UnconstrainedBox':
-        return _buildUnconstrainedBox(description.properties);
-      case 'Scaffold':
-        return _buildScaffold(description.properties);
-      case 'AppBar':
-        return _buildAppBar(description.properties);
-      case 'BottomNavigationBar':
-        return _buildBottomNavigationBar(description.properties);
-      case 'Drawer':
-        return _buildDrawer(description.properties);
-      case 'TabBar':
-        return _buildTabBar(description.properties);
-      case 'TabBarView':
-        return _buildTabBarView(description.properties);
-      case 'AlertDialog':
-        return _buildAlertDialog(description.properties);
-      case 'SnackBar':
-        return _buildSnackBar(description.properties);
-      case 'Divider':
-        return _buildDivider(description.properties);
-      case 'CircularProgressIndicator':
-        return _buildCircularProgressIndicator(description.properties);
-      case 'LinearProgressIndicator':
-        return _buildLinearProgressIndicator(description.properties);
-      case 'Slider':
-        return _buildSlider(description.properties);
-      case 'Switch':
-        return _buildSwitch(description.properties);
-      case 'Checkbox':
-        return _buildCheckbox(description.properties);
-      case 'Radio':
-        return _buildRadio(description.properties);
-      case 'DropdownButton':
-        return _buildDropdownButton(description.properties);
-      case 'Chip':
-        return _buildChip(description.properties);
-      case 'Tooltip':
-        return _buildTooltip(description.properties);
-      case 'AnimatedContainer':
-        return _buildAnimatedContainer(description.properties);
-      case 'FadeTransition':
-        return _buildFadeTransition(description.properties);
-      case 'ScaleTransition':
-        return _buildScaleTransition(description.properties);
-      case 'SlideTransition':
-        return _buildSlideTransition(description.properties);
-      case 'Opacity':
-        return _buildOpacity(description.properties);
-      default:
-        throw Exception('Unsupported widget type: ${description.type}');
-    } 
-   } catch (e) {
-    print('Error building widget ${description.type}: $e');
-    throw e; 
+        return _buildGridView(description.properties);  
+
+        default:
+          throw Exception('Unsupported widget type: ${description.type}');
+      }
+    } catch (e) {
+      print('Error building widget ${description.type}: $e');
+      throw e;
+    }
   }
-  }
-
-  // static Widget _buildText(Map<String, dynamic> properties) {
-  //   TextStyle? style;
-  //   if (properties['style'] != null) {
-  //     final styleProps = properties['style'] as Map<String, dynamic>;
-  //     style = TextStyle(
-  //       color: _parseColor(styleProps['color']),
-  //       fontSize: double.tryParse(styleProps['fontSize']?.toString() ?? ''),
-  //       fontWeight: _parseFontWeight(styleProps['fontWeight']),
-  //       fontFamily: styleProps['fontFamily'],
-  //     );
-  //   } else {
-  //     style = TextStyle(
-  //       color: _parseColor(properties['color']),
-  //       fontSize: double.tryParse(properties['fontSize']?.toString() ?? ''),
-  //     );
-  //   }
-  //   return Text(
-  //     properties['text'] ?? '',
-  //     style: style,
-  //   );
-  // }
-
-
 
 // static Widget _buildText(Map<String, dynamic> properties) {
 //   TextStyle? style;
-
-//   if (properties.containsKey('color') || properties.containsKey('fontSize')) {
+//   if (properties.containsKey('style') || properties.containsKey('color') || properties.containsKey('fontSize')) {
 //     style = TextStyle(
-//       color: _parseColor(properties['color']),
-//       fontSize: double.tryParse(properties['fontSize']?.toString() ?? ''),
+//       color: _parseColor(properties['color'] ?? '#000000'),  // default color
+//       fontSize: double.tryParse(properties['fontSize']?.toString() ?? '14'), // default font size
 //       fontWeight: _parseFontWeight(properties['fontWeight']),
-//       fontFamily: properties['fontFamily'],
+//       fontFamily: properties['fontFamily'] ?? 'Arial', // default font family
 //     );
 //   }
 
-//   // Text content might be within a 'text' property or as direct content
-//   String text = properties['text'] ?? '';
+//   // Safeguard text property to ensure it is never null
+//   String text = properties['text']?.toString() ?? 'Default Text';
 
 //   return Text(
 //     text,
@@ -189,35 +169,27 @@ class WidgetBuilder {
 //   );
 // }
 
+  static Widget _buildText(Map<String, dynamic> properties) {
+    TextStyle? style;
 
+    if (properties.containsKey('style') ||
+        properties.containsKey('color') ||
+        properties.containsKey('fontSize')) {
+      style = TextStyle(
+        color: _parseColor(properties['color'] ?? '#000000'),
+        fontSize: double.tryParse(properties['fontSize']?.toString() ?? '14'),
+        fontWeight: _parseFontWeight(properties['fontWeight']),
+        fontFamily: properties['fontFamily'] ?? 'Arial',
+      );
+    }
+    // Safeguard the 'text' property to ensure it is never null
+    String text = properties['text']?.toString() ?? 'Default Text';
 
-static Widget _buildText(Map<String, dynamic> properties) {
-  TextStyle? style;
-  if (properties.containsKey('style') || properties.containsKey('color') || properties.containsKey('fontSize')) {
-    style = TextStyle(
-      color: _parseColor(properties['color'] ?? '#000000'),  // default color
-      fontSize: double.tryParse(properties['fontSize']?.toString() ?? '14'), // default font size
-      fontWeight: _parseFontWeight(properties['fontWeight']),
-      fontFamily: properties['fontFamily'] ?? 'Arial', // default font family
+    return Text(
+      text,
+      style: style,
     );
   }
-  
-  // Safeguard text property to ensure it is never null
-  String text = properties['text']?.toString() ?? 'Default Text';
-  
-  return Text(
-    text,
-    style: style,
-  );
-}
-
-
-
-
-
-
-
-
 
   static FontWeight? _parseFontWeight(String? fontWeight) {
     switch (fontWeight?.toLowerCase()) {
@@ -232,42 +204,45 @@ static Widget _buildText(Map<String, dynamic> properties) {
     }
   }
 
+  static Widget _buildContainer(Map<String, dynamic> properties) {
+    // Ensure Container only has one child
+    if (properties.containsKey('children')) {
+      throw Exception("Container can only have one child.");
+    }
 
-
-static Widget _buildContainer(Map<String, dynamic> properties) {
     return Container(
       color: _parseColor(properties['color']),
       padding: _parsePadding(properties['padding']),
-      // Handle child widget for both JSON and XML inputs
       child: properties['child'] != null
           ? build(_getWidgetDescription(properties['child']))
           : null,
     );
   }
 
+static Widget _buildColumn(Map<String, dynamic> properties) {
+  return Column(
+    crossAxisAlignment: _parseCrossAxisAlignment(properties['crossAxisAlignment']),
+    mainAxisAlignment: _parseMainAxisAlignment(properties['mainAxisAlignment']),
+    mainAxisSize: _parseMainAxisSize(properties['mainAxisSize']),
+    children: _buildChildren(properties['children']),
+  );
+}
 
-
-
-
-
-  static Widget _buildColumn(Map<String, dynamic> properties) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start, 
-      children: _buildChildren(properties['children']),
-    );
-  }
-
-  static Widget _buildRow(Map<String, dynamic> properties) {
-    return Row(
-      children: _buildChildren(properties['children']),
-    );
-  }
+static Widget _buildRow(Map<String, dynamic> properties) {
+  return Row(
+    crossAxisAlignment: _parseCrossAxisAlignment(properties['crossAxisAlignment']),
+    mainAxisAlignment: _parseMainAxisAlignment(properties['mainAxisAlignment']),
+    mainAxisSize: _parseMainAxisSize(properties['mainAxisSize']),
+    children: _buildChildren(properties['children']),
+  );
+}
 
   static Widget _buildStack(Map<String, dynamic> properties) {
-    return Stack(
-      children: _buildChildren(properties['children']),
-    );
-  }
+  return Stack(
+    alignment: _parseAlignment(properties['alignment']),
+    children: _buildChildren(properties['children']),
+  );
+}
 
   static Widget _buildListView(Map<String, dynamic> properties) {
     return ListView(
@@ -275,24 +250,42 @@ static Widget _buildContainer(Map<String, dynamic> properties) {
     );
   }
 
-  static Widget _buildGridView(Map<String, dynamic> properties) {
-    return GridView.count(
-      crossAxisCount:
-          int.tryParse(properties['crossAxisCount']?.toString() ?? '2') ?? 2,
-      children: _buildChildren(properties['children']),
-    );
-  }
+static Widget _buildGridView(Map<String, dynamic> properties) {
+  int crossAxisCount = int.tryParse(properties['crossAxisCount']?.toString() ?? '2') ?? 2;
+  double mainAxisSpacing = double.tryParse(properties['mainAxisSpacing']?.toString() ?? '0') ?? 0;
+  double crossAxisSpacing = double.tryParse(properties['crossAxisSpacing']?.toString() ?? '0') ?? 0;
+  double childAspectRatio = double.tryParse(properties['childAspectRatio']?.toString() ?? '1') ?? 1;
 
-static Widget _buildSizedBox(Map<String, dynamic> properties) {
-  return SizedBox(
-    width: double.tryParse(properties['width']?.toString() ?? ''),
-    height: double.tryParse(properties['height']?.toString() ?? ''),
-    child: properties['child'] != null
-        ? build(WidgetDescription.fromJson(properties['child']))
-        : null,
+  return GridView.count(
+    crossAxisCount: crossAxisCount,
+    mainAxisSpacing: mainAxisSpacing,
+    crossAxisSpacing: crossAxisSpacing,
+    childAspectRatio: childAspectRatio,
+    children: _buildChildren(properties['children']),
   );
 }
 
+  static Widget _buildPositioned(Map<String, dynamic> properties) {
+  return Positioned(
+    left: double.tryParse(properties['left']?.toString() ?? '0'),
+    top: double.tryParse(properties['top']?.toString() ?? '0'),
+    right: double.tryParse(properties['right']?.toString() ?? '0'),
+    bottom: double.tryParse(properties['bottom']?.toString() ?? '0'),
+    child: properties['child'] != null
+        ? build(_getWidgetDescription(properties['child']))
+        : Container(),
+  );
+}
+
+  static Widget _buildSizedBox(Map<String, dynamic> properties) {
+    return SizedBox(
+      width: double.tryParse(properties['width']?.toString() ?? ''),
+      height: double.tryParse(properties['height']?.toString() ?? ''),
+      child: properties['child'] != null
+          ? build(WidgetDescription.fromJson(properties['child']))
+          : null,
+    );
+  }
 
   static Widget _buildPadding(Map<String, dynamic> properties) {
     return Padding(
@@ -303,23 +296,22 @@ static Widget _buildSizedBox(Map<String, dynamic> properties) {
     );
   }
 
-static Widget _buildCenter(Map<String, dynamic> properties) {
-  return Center(
-    child: properties['child'] != null
-        ? build(WidgetDescription.fromJson(properties['child']))
-        : null,
-  );
-}
+  static Widget _buildCenter(Map<String, dynamic> properties) {
+    return Center(
+      child: properties['child'] != null
+          ? build(WidgetDescription.fromJson(properties['child']))
+          : null,
+    );
+  }
 
-
-static Widget _buildAlign(Map<String, dynamic> properties) {
-  return Align(
-    alignment: _parseAlignment(properties['alignment']),
-    child: properties['child'] != null
-        ? build(WidgetDescription.fromJson(properties['child']))
-        : null,
-  );
-}
+  static Widget _buildAlign(Map<String, dynamic> properties) {
+    return Align(
+      alignment: _parseAlignment(properties['alignment']),
+      child: properties['child'] != null
+          ? build(WidgetDescription.fromJson(properties['child']))
+          : null,
+    );
+  }
 
   static Widget _buildAspectRatio(Map<String, dynamic> properties) {
     return AspectRatio(
@@ -352,16 +344,17 @@ static Widget _buildAlign(Map<String, dynamic> properties) {
     );
   }
 
-static Widget _buildLimitedBox(Map<String, dynamic> properties) {
-  return LimitedBox(
-    maxWidth: double.tryParse(properties['maxWidth']?.toString() ?? '0') ?? 0.0,
-    maxHeight: double.tryParse(properties['maxHeight']?.toString() ?? '0') ?? 0.0,
-    child: properties['children'] != null
-        ? Column(children: _buildChildren(properties['children']))
-        : null,
-  );
-}
-
+  static Widget _buildLimitedBox(Map<String, dynamic> properties) {
+    return LimitedBox(
+      maxWidth:
+          double.tryParse(properties['maxWidth']?.toString() ?? '0') ?? 0.0,
+      maxHeight:
+          double.tryParse(properties['maxHeight']?.toString() ?? '0') ?? 0.0,
+      child: properties['children'] != null
+          ? Column(children: _buildChildren(properties['children']))
+          : null,
+    );
+  }
 
   static Widget _buildOffstage(Map<String, dynamic> properties) {
     return Offstage(
@@ -444,15 +437,15 @@ static Widget _buildLimitedBox(Map<String, dynamic> properties) {
     );
   }
 
-static Widget _buildOpacity(Map<String, dynamic> properties) {
-  return Opacity(
-    opacity: double.tryParse(properties['opacity']?.toString() ?? '1.0') ?? 1.0,
-    child: properties['child'] != null
-        ? build(WidgetDescription.fromJson(properties['child']))
-        : null,
-  );
-}
-
+  static Widget _buildOpacity(Map<String, dynamic> properties) {
+    return Opacity(
+      opacity:
+          double.tryParse(properties['opacity']?.toString() ?? '1.0') ?? 1.0,
+      child: properties['child'] != null
+          ? build(WidgetDescription.fromJson(properties['child']))
+          : null,
+    );
+  }
 
   static Widget _buildBackdropFilter(Map<String, dynamic> properties) {
     // BackdropFilter requires a filter
@@ -524,14 +517,6 @@ static Widget _buildOpacity(Map<String, dynamic> properties) {
     );
   }
 
-  // static Widget _buildExpanded(Map<String, dynamic> properties) {
-  //   return Expanded(
-  //     child: properties['children'] != null
-  //         ? Column(children: _buildChildren(properties['children']))
-  //         : Container(),
-  //   );
-  // }
-
   static Widget _buildExpanded(Map<String, dynamic> properties) {
     return Expanded(
       flex: int.tryParse(properties['flex']?.toString() ?? '1') ?? 1,
@@ -562,101 +547,60 @@ static Widget _buildScaffold(Map<String, dynamic> properties) {
 }
 
 
-  // static Widget _buildAppBar(Map<String, dynamic> properties) {
-  //   return AppBar(
-  //     title: properties['title'] != null
-  //         ? build(WidgetDescription.fromJson(properties['title']))
-  //         : null,
-  //     leading: properties['leading'] != null
-  //         ? build(WidgetDescription.fromJson(properties['leading']))
-  //         : null,
-  //     actions: properties['actions'] != null
-  //         ? _buildChildren(properties['actions'])
-  //         : null,
-  //   );
-  // }
-
   static Widget _buildAppBar(Map<String, dynamic> properties) {
-  return AppBar(
-    title: properties['title'] != null
-        ? build(WidgetDescription.fromJson(properties['title']))
-        : null,
-    leading: properties['leading'] != null
-        ? build(WidgetDescription.fromJson(properties['leading']))
-        : null,
-    actions: properties['actions'] != null
-        ? _buildChildren(properties['actions'])
-        : null,
-  );
-}
+    return AppBar(
+      title: properties['title'] != null
+          ? build(WidgetDescription.fromJson(properties['title']))
+          : null,
+      leading: properties['leading'] != null
+          ? build(WidgetDescription.fromJson(properties['leading']))
+          : null,
+      actions: properties['actions'] != null
+          ? _buildChildren(properties['actions'])
+          : null,
+    );
+  }
 
+  static Widget _buildBottomNavigationBar(Map<String, dynamic> properties) {
+    return BottomNavigationBar(
+      items: properties['items'] != null
+          ? _buildBottomNavigationBarItems(properties['items'])
+          : [],
+    );
+  }
 
-static Widget _buildBottomNavigationBar(Map<String, dynamic> properties) {
-  return BottomNavigationBar(
-    items: properties['items'] != null
-        ? _buildBottomNavigationBarItems(properties['items'])
-        : [],
-  );
-}
-
-// static WidgetDescription _parseElement(XmlElement element) {
-//     final type = element.name.local;
-//     final properties = <String, dynamic>{};
-//     print("Parsing element: $type");
-
-//     for (var attribute in element.attributes) {
-//         properties[attribute.name.local] = attribute.value;
-//         print(" - Attribute: ${attribute.name.local} = ${attribute.value}");
-//     }
-
-//     final children = element.children.whereType<XmlElement>().toList();
-//     if (children.isNotEmpty) {
-//         properties['children'] = children
-//             .map((child) => _parseElement(child).toJson())
-//             .toList();
-//     } else {
-//         print("Warning: Element '$type' has no children or is an unexpected node.");
-//     }
-
-//     print("Parsed properties: $properties");
-//     return WidgetDescription(type: type, properties: properties);
-// }
-
-
-static WidgetDescription _parseElement(XmlElement element) {
+  static WidgetDescription _parseElement(XmlElement element) {
     final type = element.name.local;
     final properties = <String, dynamic>{};
-    print("Parsing element: $type with attributes ${element.attributes.map((e) => '${e.name.local}: ${e.value}').join(', ')}");
+    print(
+        "Parsing element: $type with attributes ${element.attributes.map((e) => '${e.name.local}: ${e.value}').join(', ')}");
 
     for (var attribute in element.attributes) {
-        properties[attribute.name.local] = attribute.value;
+      properties[attribute.name.local] = attribute.value;
     }
 
     final children = element.children.whereType<XmlElement>().toList();
     if (children.isNotEmpty) {
-        properties['children'] = children
-            .map((child) => _parseElement(child).toJson())
-            .toList();
+      properties['children'] =
+          children.map((child) => _parseElement(child).toJson()).toList();
     } else {
-        print("Warning: Element '$type' has no children.");
+      print("Warning: Element '$type' has no children.");
     }
 
     print("Parsed properties for element '$type': $properties");
     return WidgetDescription(type: type, properties: properties);
-}
+  }
 
-
-
-static List<BottomNavigationBarItem> _buildBottomNavigationBarItems(List<dynamic> items) {
-  return items.map((item) {
-    final itemProps = item as Map<String, dynamic>;
-    return BottomNavigationBarItem(
-      icon: build(WidgetDescription.fromJson(itemProps['icon'])),
-      label: itemProps['label'],
-    );
-  }).toList();
-}
-
+  static List<BottomNavigationBarItem> _buildBottomNavigationBarItems(
+      List<dynamic> items) {
+    return items.map((item) {
+      final itemProps = item as Map<String, dynamic>;
+      return BottomNavigationBarItem(
+        icon: build(WidgetDescription.fromJson(itemProps['icon'])),
+        label: itemProps['label'],
+      );
+    }).toList();
+  }
 
   static Widget _buildDrawer(Map<String, dynamic> properties) {
     return Drawer(
@@ -830,73 +774,65 @@ static List<BottomNavigationBarItem> _buildBottomNavigationBarItems(List<dynamic
     );
   }
 
-  // static List<Widget> _buildChildren(dynamic children) {
-  //   if (children is List) {
-  //     return children.map((child) => build(_getWidgetDescription(child))).toList();
-  //   } else {
-  //     return [];
-  //   }
-  // }
+  static List<Widget> _buildChildren(List<dynamic>? children) {
+    return children?.map((child) {
+          if (child is Map<String, dynamic>) {
+            if (child.containsKey('type') && child.containsKey('properties')) {
+              return build(WidgetDescription.fromJson(child));
+            }
+          }
 
-static List<Widget> _buildChildren(List<dynamic>? children) {
-  return children?.map((child) {
-    if (child is Map<String, dynamic>) {
-      if (child.containsKey('type') && child.containsKey('properties')) {
-        return build(WidgetDescription.fromJson(child));
-      }
-    }
-    return SizedBox.shrink(); // Default widget if nothing is parsed
-  }).toList() ?? [];
-}
+          // Return a default empty SizedBox if parsing fails
+          return SizedBox.shrink();
+        }).toList() ??
+        [];
+  }
 
-
-
-
-static Color? _parseColor(String colorString) {
-    if (colorString.startsWith('#')) {
-        colorString = colorString.substring(1);
-    }
+  static Color? _parseColor(String? colorString) {
+    if (colorString == null || !colorString.startsWith('#')) return null;
+    colorString = colorString.substring(1);
     if (colorString.length == 6) {
-        return Color(int.parse('0xFF$colorString'));
+      return Color(int.parse('0xFF$colorString'));
     }
-    return null;  
-}
-
-
-static EdgeInsets? _parsePadding(String? paddingString) {
-  if (paddingString == null) return null;
-  final parts = paddingString.split(',').map(double.parse).toList();
-  if (parts.length == 4) {
-    return EdgeInsets.fromLTRB(parts[0], parts[1], parts[2], parts[3]);
+    // Return a default color in case of parsing failure
+    return Colors.black;
   }
-  return EdgeInsets.zero;
-}
 
-
-  static Alignment _parseAlignment(String? alignmentString) {
-    switch (alignmentString) {
-      case 'topLeft':
-        return Alignment.topLeft;
-      case 'topCenter':
-        return Alignment.topCenter;
-      case 'topRight':
-        return Alignment.topRight;
-      case 'centerLeft':
-        return Alignment.centerLeft;
-      case 'center':
-        return Alignment.center;
-      case 'centerRight':
-        return Alignment.centerRight;
-      case 'bottomLeft':
-        return Alignment.bottomLeft;
-      case 'bottomCenter':
-        return Alignment.bottomCenter;
-      case 'bottomRight':
-        return Alignment.bottomRight;
-      default:
-        return Alignment.center;
+  static EdgeInsets? _parsePadding(String? paddingString) {
+    if (paddingString == null) return EdgeInsets.zero;
+    final parts = paddingString.split(',').map(double.parse).toList();
+    if (parts.length == 4) {
+      return EdgeInsets.fromLTRB(parts[0], parts[1], parts[2], parts[3]);
     }
+    // Default to zero padding in case of incorrect input
+    return EdgeInsets.zero;
   }
+
+static Alignment _parseAlignment(String? alignmentString) {
+  switch (alignmentString?.toLowerCase()) {
+    case 'topleft':
+      return Alignment.topLeft;
+    case 'topcenter':
+      return Alignment.topCenter;
+    case 'topright':
+      return Alignment.topRight;
+    case 'centerleft':
+      return Alignment.centerLeft;
+    case 'center':
+      return Alignment.center;
+    case 'centerright':
+      return Alignment.centerRight;
+    case 'bottomleft':
+      return Alignment.bottomLeft;
+    case 'bottomcenter':
+      return Alignment.bottomCenter;
+    case 'bottomright':
+      return Alignment.bottomRight;
+    default:
+      // Default alignment is center
+      return Alignment.center;
+  }
+}
 
   static BoxFit _parseBoxFit(String? fitString) {
     switch (fitString) {
@@ -919,14 +855,16 @@ static EdgeInsets? _parsePadding(String? paddingString) {
     }
   }
 
-  static Matrix4? _parseMatrix4(String? matrixString) {
-    if (matrixString == null) return null;
-    final values = matrixString.split(',').map(double.parse).toList();
-    if (values.length == 16) {
-      return Matrix4.fromList(values);
-    }
-    return null;
+static Matrix4? _parseMatrix4(String? matrixString) {
+  if (matrixString == null) return Matrix4.identity();
+  final values = matrixString.split(',').map(double.parse).toList();
+  if (values.length == 16) {
+    return Matrix4.fromList(values);
   }
+  // Return identity matrix in case of error
+  return Matrix4.identity();
+}
+
 
   static BoxDecoration _parseBoxDecoration(
       Map<String, dynamic>? decorationProps) {
@@ -956,8 +894,8 @@ static EdgeInsets? _parsePadding(String? paddingString) {
           double.tryParse(shadowProps['blurRadius']?.toString() ?? '0') ?? 0,
     );
   }
-  
-    static WidgetDescription _getWidgetDescription(dynamic child) {
+
+  static WidgetDescription _getWidgetDescription(dynamic child) {
     if (child is XmlElement) {
       return WidgetDescription.fromXml(child);
     } else if (child is Map<String, dynamic>) {
@@ -966,4 +904,52 @@ static EdgeInsets? _parsePadding(String? paddingString) {
       throw Exception('Unsupported child format');
     }
   }
+  
+// Parsing alignment
+static CrossAxisAlignment _parseCrossAxisAlignment(String? alignment) {
+  switch (alignment) {
+    case 'start':
+      return CrossAxisAlignment.start;
+    case 'end':
+      return CrossAxisAlignment.end;
+    case 'center':
+      return CrossAxisAlignment.center;
+    case 'stretch':
+      return CrossAxisAlignment.stretch;
+    default:
+      return CrossAxisAlignment.center;
+  }
+}
+
+// Parsing main axis alignment
+static MainAxisAlignment _parseMainAxisAlignment(String? alignment) {
+  switch (alignment) {
+    case 'start':
+      return MainAxisAlignment.start;
+    case 'end':
+      return MainAxisAlignment.end;
+    case 'center':
+      return MainAxisAlignment.center;
+    case 'spaceBetween':
+      return MainAxisAlignment.spaceBetween;
+    case 'spaceAround':
+      return MainAxisAlignment.spaceAround;
+    case 'spaceEvenly':
+      return MainAxisAlignment.spaceEvenly;
+    default:
+      return MainAxisAlignment.start;
+  }
+}
+
+// Parsing main axis size
+static MainAxisSize _parseMainAxisSize(String? size) {
+  switch (size) {
+    case 'min':
+      return MainAxisSize.min;
+    case 'max':
+      return MainAxisSize.max;
+    default:
+      return MainAxisSize.max;
+  }
+}
 }
